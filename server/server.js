@@ -20,6 +20,8 @@ app.use(cookieParser());
 app.use("/", express.static("public")); // css style file
 app.use("/", require("./routes/root"));
 
+app.use("/users", require("./routes/userRoutes"));
+
 app.use("*", (req, res) => {
   res.status(400);
   if (req.accepts("html")) {

@@ -13,10 +13,11 @@ const userSchema = new mongoose.Schema({
     {
       type: String,
       default: "Employee", // if frontend does not have a role, it will be employee by default
+      required: true,
     },
   ],
   active: {
-    type: Bolean,
+    type: Boolean,
     default: true, // if frontend does not have active employee, it will be true by default
   },
 });
