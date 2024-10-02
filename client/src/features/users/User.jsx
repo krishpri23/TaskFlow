@@ -1,4 +1,6 @@
-import React from "react";
+/**
+ * Instead of going through the arrays of users and finding the user with id, we use selectors defined
+ */
 import { useSelector } from "react-redux";
 import { selectUsersById } from "./usersApiSlice";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +22,7 @@ const User = ({ userId }) => {
         <td> {user.username}</td>
         <td> {userRolesString} </td>
         <td>
-          <button onClick={handleEdit}> Pen </button>
+          <button onClick={handleEdit}> Edit </button>
         </td>
       </tr>
     );

@@ -3,13 +3,18 @@ import { useGetUsersQuery } from "./usersApiSlice";
 import User from "./User";
 
 const UsersList = () => {
+  // requery data when we remount the component
   const {
     data: users,
     isLoading,
     isSuccess,
     isError,
     error,
-  } = useGetUsersQuery();
+  } = useGetUsersQuery(null, {
+    pollingInterval: 60000,
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+  });
 
   let content;
 
@@ -21,25 +26,27 @@ const UsersList = () => {
 
   let tableContent;
   if (isSuccess) {
+    // array of user ids
     const { ids } = users;
     tableContent = ids?.length
       ? ids.map((userId) => <User key={userId} userId={userId} />)
       : null;
+
+    content = (
+      <table>
+        <thead>
+          <tr>
+            <th> username </th>
+            <th>roles</th>
+            <th>edit</th>
+          </tr>
+        </thead>
+
+        <tbody>{tableContent}</tbody>
+      </table>
+    );
   }
 
-  content = (
-    <table>
-      <thead>
-        <tr>
-          <th> username </th>
-          <th>roles</th>
-          <th>edit</th>
-        </tr>
-      </thead>
-
-      <tbody>{tableContent}</tbody>
-    </table>
-  );
   return content;
 };
 
