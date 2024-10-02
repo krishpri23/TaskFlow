@@ -21,6 +21,8 @@ const NotesList = () => {
     content = <p> {error?.data?.message} </p>;
   }
 
+  console.log("NOTES INSIDE NOTESLIST", notes);
+
   if (isSuccess) {
     const { ids } = notes;
 

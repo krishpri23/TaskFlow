@@ -22,7 +22,7 @@ export const notesApiSlice = apiSlice.injectEndpoints({
       validateStatus: (response, result) => {
         return response.status === 200 && !result.isError;
       },
-      keepUnusedDataFor: 5,
+      // keepUnusedDataFor: 5,
       transformResponse: (responseData) => {
         console.log("inside transform", responseData);
         const loadNotes = responseData.map((note) => {
@@ -52,10 +52,48 @@ export const notesApiSlice = apiSlice.injectEndpoints({
         } else return [{ type: "Note", id: "LIST" }];
       },
     }),
+    addNote: builder.mutation({
+      query: (initialNoteData) => ({
+        url: "/notes",
+        method: "POST",
+        body: {
+          ...initialNoteData,
+        },
+      }),
+
+      invalidatesTags: [{ type: "Note", id: "LIST" }],
+    }),
+
+    updateNote: builder.mutation({
+      query: (initialNoteData) => ({
+        url: "/notes",
+        method: "PATCH",
+        body: {
+          ...initialNoteData,
+        },
+      }),
+
+      invalidatesTags: (result, arg, error) => [{ type: "Note", id: arg.id }],
+    }),
+
+    deleteNote: builder.mutation({
+      query: ({ id }) => ({
+        url: "/notes",
+        method: "DELETE",
+        body: { id },
+      }),
+
+      invalidatesTags: (result, arg, error) => [{ type: "Note", id: arg.id }],
+    }),
   }),
 });
 
-export const { useGetNotesQuery } = notesApiSlice;
+export const {
+  useGetNotesQuery,
+  useUpdateNoteMutation,
+  useAddNoteMutation,
+  useDeleteNoteMutation,
+} = notesApiSlice;
 
 // returns query result object
 
