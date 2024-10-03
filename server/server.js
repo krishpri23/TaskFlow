@@ -21,6 +21,7 @@ app.use("/", express.static("public")); // css style file
 app.use("/", require("./routes/root"));
 
 app.use("/users", require("./routes/userRoutes"));
+app.use("/auth", require("./routes/authRoutes"));
 app.use("/notes", require("./routes/notesRoutes"));
 
 app.use("*", (req, res) => {

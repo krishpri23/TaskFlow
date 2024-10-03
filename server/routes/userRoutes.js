@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/UserController");
+const verifyJWT = require("../middleware/verifyJWT");
+
+// applies to all the routes
+// router.use(verifyJWT);
 
 // '/' denotes the parent route 'users'
 router
