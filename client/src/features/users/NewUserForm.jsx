@@ -56,12 +56,12 @@ const NewUserForm = () => {
     setRoles(values);
   };
 
-  const onSave = () => {
+  const onSave = async () => {
     if (
       [validPassword, validUsername, roles.length].every(Boolean) &&
       !isLoading
     ) {
-      addNewUser({ username, password, roles });
+      await addNewUser({ username, password, roles });
     } else {
       setErr(" Invalid username or password ! ");
     }

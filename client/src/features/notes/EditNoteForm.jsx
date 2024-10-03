@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useUpdateNoteMutation } from "./notesApiSlice";
+import { useDeleteNoteMutation, useUpdateNoteMutation } from "./notesApiSlice";
 import { useNavigate } from "react-router-dom";
 
 const EditNoteForm = ({ note, users }) => {
@@ -15,29 +15,43 @@ const EditNoteForm = ({ note, users }) => {
 
   const [updateNote, { isLoading, isSuccess, isError, error }] =
     useUpdateNoteMutation();
-  console.log("note", note);
-  console.log("users inside edit note ", users);
 
+  const [
+    deleteNote,
+    {
+      isLoading: isDelLoading,
+      isSuccess: isDelSuccess,
+      isError: isDelError,
+      error: delError,
+    },
+  ] = useDeleteNoteMutation();
   const user = users
     .filter((user) => user._id === note.user)
     .map((user) => user._id);
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess || isDelSuccess) {
       setTitle("");
       setBody("");
       navigate("/dash/notes");
     }
-  }, [isSuccess, navigate]);
+  }, [isSuccess, isDelSuccess, navigate]);
 
-  const onSave = () => {
+  if (isLoading) {
+    return <p> Loading...</p>;
+  }
+
+  const onSave = async () => {
     if (title && body) {
-      updateNote({ id: note._id, user, title, text: body, completed });
-      console.log("updated");
+      await updateNote({ id: note.id, user, title, text: body, completed });
     } else {
       setErr("Invalid data");
       console.log("not updated");
     }
+  };
+
+  const onDelete = async () => {
+    await deleteNote({ id: note.id });
   };
 
   return (
@@ -90,12 +104,16 @@ const EditNoteForm = ({ note, users }) => {
           </select>
         </div>
         <div className="flex justify-between">
-          <button className="mx-auto" onClick={onSave}>
+          <button type="submit" className="mx-auto" onClick={onSave}>
             {" "}
             Save{" "}
           </button>
 
-          <button className="bg-red-800 text-white font-bold mx-auto disabled:bg-opacity-75 disabled:cursor-not-allowed">
+          <button
+            type="submit"
+            className="bg-red-800 text-white font-bold mx-auto disabled:bg-opacity-75 disabled:cursor-not-allowed"
+            onClick={onDelete}
+          >
             {" "}
             Delete
           </button>

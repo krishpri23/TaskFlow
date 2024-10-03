@@ -73,7 +73,7 @@ export const notesApiSlice = apiSlice.injectEndpoints({
         },
       }),
 
-      invalidatesTags: (result, arg, error) => [{ type: "Note", id: arg.id }],
+      invalidatesTags: (result, error, arg) => [{ type: "Note", id: arg.id }],
     }),
 
     deleteNote: builder.mutation({
@@ -83,7 +83,7 @@ export const notesApiSlice = apiSlice.injectEndpoints({
         body: { id },
       }),
 
-      invalidatesTags: (result, arg, error) => [{ type: "Note", id: arg.id }],
+      invalidatesTags: (result, error, arg) => [{ type: "Note", id: arg.id }],
     }),
   }),
 });

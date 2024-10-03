@@ -20,18 +20,16 @@ const NotesList = () => {
   if (isError) {
     content = <p> {error?.data?.message} </p>;
   }
-
-  console.log("NOTES INSIDE NOTESLIST", notes);
-
+  console.log("INSIDE NOTE LIST", notes);
   if (isSuccess) {
     const { ids } = notes;
 
     const tableContent = ids?.length
       ? ids.map((noteId) => <Note key={noteId} noteId={noteId} />)
-      : null;
+      : console.log("NULL");
 
     content = (
-      <table>
+      <table className="">
         <thead>
           <tr>
             <th> username </th>

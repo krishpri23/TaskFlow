@@ -7,6 +7,8 @@ const Note = ({ noteId }) => {
   const note = useSelector((state) => selectNotesById(state, noteId));
   const navigate = useNavigate();
 
+  console.log("note inside note list", note);
+
   if (note) {
     const created = new Date(note.createdAt).toLocaleString("en-US", {
       day: "numeric",

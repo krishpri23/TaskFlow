@@ -11,6 +11,7 @@ import EditUser from "./features/users/EditUser";
 import EditNote from "./features/notes/EditNote";
 import NewUserForm from "./features/users/NewUserForm";
 import Prefetch from "./features/auth/Prefetch";
+import NewNoteForm from "./features/notes/NewNoteForm";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="notes">
               <Route index element={<NotesList />} />
               <Route path=":id" element={<EditNote />} />
+              <Route path="new" element={<NewNoteForm />} />
             </Route>
             <Route path="users">
               <Route index element={<UsersList />} />
