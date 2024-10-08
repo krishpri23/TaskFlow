@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply font-poppins;
+}
+
 @layer components {
   input,
   select,

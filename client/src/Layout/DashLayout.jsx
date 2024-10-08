@@ -1,18 +1,18 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import DashHeader from "../components/DashHeader";
 import DashFooter from "../components/DashFooter";
 
 const DashLayout = () => {
   return (
-    <div className="flex flex-col w-full h-screen">
+    <>
       <DashHeader />
-      <main className="flex-grow">
+      <div className="bg-red-100">
+        {/* dash intro */}
         <Outlet />
-      </main>
-
+      </div>
       <DashFooter />
-    </div>
+    </>
   );
 };
 

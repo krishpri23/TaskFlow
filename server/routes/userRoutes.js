@@ -4,7 +4,7 @@ const userController = require("../controllers/UserController");
 const verifyJWT = require("../middleware/verifyJWT");
 
 // applies to all the routes
-// router.use(verifyJWT);
+router.use(verifyJWT);
 
 // '/' denotes the parent route 'users'
 router

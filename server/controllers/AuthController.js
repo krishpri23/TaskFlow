@@ -6,6 +6,8 @@ const User = require("../models/User");
 // @desc login, public route, POST, generates both tokens on login
 const login = asyncHandler(async (req, res) => {
   const { username, password } = req.body;
+  console.log(username, password, "inside server");
+  console.log(req.body);
 
   if (!username || !password) {
     return res.status(400).json({ message: "All fields required!" });

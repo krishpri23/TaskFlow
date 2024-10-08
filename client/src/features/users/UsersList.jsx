@@ -26,6 +26,7 @@ const UsersList = () => {
 
   let tableContent;
   if (isSuccess) {
+    console.log("success", users);
     // array of user ids
     const { ids } = users;
     tableContent = ids?.length
@@ -47,7 +48,12 @@ const UsersList = () => {
     );
   }
 
-  return content;
+  return (
+    <div>
+      {" "}
+      <h2> users list </h2>
+    </div>
+  );
 };
 
 export default UsersList;
