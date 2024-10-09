@@ -20,13 +20,18 @@ const Login = () => {
       return;
     }
 
+    console.log(username, password, "before login ");
     try {
       const { accessToken } = await login({ username, password }).unwrap();
+
+      console.log("inside login", accessToken);
+
       dispatch(setCredentials({ accessToken }));
       setUsername("");
       setPassword("");
       navigate("/dash");
     } catch (error) {
+      console.log("error in login", error);
       if (!error.status) {
         setErrMsg("No server response");
       } else if (error.status === 400) {
@@ -61,10 +66,10 @@ const Login = () => {
           />
         </div>
         <div className="flex flex-col gap-2 mt-5">
-          <label htmlFor="password"> Password </label>
+          <label htmlFor="user-password"> Password </label>
           <input
             type="password"
-            id="password"
+            id="user-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
