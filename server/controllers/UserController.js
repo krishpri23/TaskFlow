@@ -24,9 +24,11 @@ const createUser = asyncHandler(async (req, res) => {
     return res.status(400).json({ message: "All fields are required" });
   }
 
+  console.log(username, password, "inside create user");
+
   // check for duplicate, exec() returns a promise, lean returns plain js objects
   const duplicate = await User.findOne({ username }).lean().exec();
-
+  console.log("duplicate ", duplicate);
   if (duplicate) {
     // 409 - conflict
     return res.status(409).json({ message: "User already exists" });

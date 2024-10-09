@@ -10,7 +10,11 @@ html {
   input,
   select,
   textarea {
-    @apply border-slate-700 bg-slate-200 px-5 py-2 rounded-lg;
+    @apply border-2 border-slate-500  px-5 py-2 rounded-lg;
+  }
+
+  label {
+    @apply font-semibold text-lg;
   }
 
   button {

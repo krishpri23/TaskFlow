@@ -20,7 +20,7 @@ const DashFooter = () => {
   }
 
   let content = (
-    <footer className=" bg-slate-400 p-5">
+    <footer className=" bg-slate-400 p-5 absolute bottom-0 w-full">
       {" "}
       <div className="mt-2">{goHomeBtn}</div>
       <p> Current user :</p> <p>Status : </p>

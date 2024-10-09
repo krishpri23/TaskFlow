@@ -9,7 +9,7 @@ const DashIntro = () => {
         {/* Relative routing which is takes to dash/users */}
         <Link to="/dash/notes"> View notes </Link>
         <Link to="/dash/users"> View user settings </Link>
-        <Link to="/dsah/users/add"> Add new User </Link>
+        <Link to="/dash/users/add"> Add new User </Link>
         <Link to="/dash/notes/new"> Add new notes </Link>
       </ul>
     </main>

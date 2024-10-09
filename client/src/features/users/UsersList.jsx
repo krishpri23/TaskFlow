@@ -48,12 +48,7 @@ const UsersList = () => {
     );
   }
 
-  return (
-    <div>
-      {" "}
-      <h2> users list </h2>
-    </div>
-  );
+  return content;
 };
 
 export default UsersList;

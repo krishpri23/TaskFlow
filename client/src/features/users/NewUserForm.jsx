@@ -35,7 +35,6 @@ const NewUserForm = () => {
     if (Boolean(validUsername)) {
       setErr("");
     }
-    console.log("valid username", validUsername);
   }, [username]);
 
   useEffect(() => {
@@ -43,7 +42,6 @@ const NewUserForm = () => {
     if (Boolean(validPassword)) {
       setErr("");
     }
-    console.log("valid password", validPassword);
   }, [password]);
 
   const onRolesChanged = (e) => {
@@ -67,15 +65,15 @@ const NewUserForm = () => {
     }
   };
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center ">
-      <h2 className="font-bold text-2xl mb-10"> Add a new user </h2>
+    <div className="w-full h-screen flex flex-col justify-start mt-20 items-center ">
+      <h2 className="font-bold text-2xl mb-5"> Add a new user </h2>
       <form
-        className="w-1/4 flex flex-col gap-10"
+        className="w-1/2 lg:w-1/3 flex flex-col gap-10 border-2 border-slate-700 bg-slate-100 rounded-lg p-5"
         onSubmit={(e) => e.preventDefault()}
       >
         <p
           className={`${
-            isError ? "text-red-600 text-3xl px-10 py-5" : "hidden"
+            isError ? "text-red-600 text-xl px-10 text-center" : "hidden"
           }`}
         >
           {" "}
