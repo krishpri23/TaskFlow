@@ -75,6 +75,7 @@ const Login = () => {
           />
         </div>
         <button className="mt-5">Login</button>
+        <input type="checkbox" name="" id="" />
       </form>
     </section>
   );

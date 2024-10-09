@@ -19,7 +19,8 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
-          await queryFulfilled;
+          const { data } = await queryFulfilled;
+          console.log(data, "inside logout mutation");
           dispatch(logout());
           dispatch(apiSlice.util.resetApiState());
         } catch (error) {
