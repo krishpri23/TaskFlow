@@ -68,7 +68,7 @@ const NewUserForm = () => {
     <div className="w-full h-screen flex flex-col justify-start mt-20 items-center ">
       <h2 className="font-bold text-2xl mb-5"> Add a new user </h2>
       <form
-        className="w-1/2 lg:w-1/3 flex flex-col gap-10 border-2 border-indigo-700 bg-indigo-100 rounded-lg p-5"
+        className="w-1/2 lg:w-1/3 flex flex-col gap-10 border-2 border-stone-700 bg-stone-100 rounded-lg p-5"
         onSubmit={(e) => e.preventDefault()}
       >
         <p

@@ -49,7 +49,7 @@ const Login = () => {
       </header>
 
       <form
-        className=" rounded-lg p-10 bg-indigo-100 shadow-lg"
+        className=" rounded-lg p-10 bg-stone-100 shadow-lg"
         onSubmit={(e) => handleLogin(e)}
       >
         <p className={`${errMsg} ? "mb-5 bg-red-200 px-5 py-5" : "hidden"`}>
