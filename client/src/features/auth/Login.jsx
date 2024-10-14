@@ -3,6 +3,7 @@ import { useLoginMutation } from "./authApiSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "./authSlice";
+import usePersist from "../../hooks/usePersist";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -11,7 +12,9 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [login, { isSuccess }] = useLoginMutation();
+  const [persist, setPersist] = usePersist();
+
+  const [login, { isLoading }] = useLoginMutation();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,12 +23,8 @@ const Login = () => {
       return;
     }
 
-    console.log(username, password, "before login ");
     try {
       const { accessToken } = await login({ username, password }).unwrap();
-
-      console.log("inside login", accessToken);
-
       dispatch(setCredentials({ accessToken }));
       setUsername("");
       setPassword("");
@@ -42,14 +41,15 @@ const Login = () => {
     }
   };
 
+  if (isLoading) return <p>Loading...</p>;
   return (
     <section className="w-full h-screen flex flex-col justify-center items-center">
       <header>
-        <h1 className="font-bold text-3xl">Login </h1>
+        <h1 className="font-bold text-3xl mb-5">Employee Login </h1>
       </header>
 
       <form
-        className="border-2 border-slate-700 rounded-lg p-10"
+        className=" rounded-lg p-10 bg-indigo-100 shadow-lg"
         onSubmit={(e) => handleLogin(e)}
       >
         <p className={`${errMsg} ? "mb-5 bg-red-200 px-5 py-5" : "hidden"`}>
@@ -75,7 +75,18 @@ const Login = () => {
           />
         </div>
         <button className="mt-5">Login</button>
-        <input type="checkbox" name="" id="" />
+        <div className="flex gap-3 mt-5 ">
+          <input
+            type="checkbox"
+            name="remember"
+            id="remember"
+            onChange={() => setPersist((prev) => !prev)}
+            checked={persist}
+          />
+          <label htmlFor="remember" className="text-sm font-normal">
+            Remember me
+          </label>
+        </div>
       </form>
     </section>
   );

@@ -15,7 +15,7 @@ const DashHeader = () => {
 
   return (
     <>
-      <nav className=" flex justify-between items-center px-5  bg-slate-800 text-teal-100 ">
+      <nav className=" flex justify-between items-center px-5  bg-indigo-800 text-teal-100 ">
         <h1 className="w-1/2"> Notes App </h1>
         <ul className="w-full flex justify-end items-center gap-10 py-3 px-5 ">
           <Link to="/">Home</Link>
