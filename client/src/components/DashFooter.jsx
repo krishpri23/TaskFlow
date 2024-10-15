@@ -1,29 +1,19 @@
 import React from "react";
-import { FaHome } from "react-icons/fa";
-import { useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const DashFooter = () => {
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
-
-  let goHomeBtn = null;
-  const handleGoHomeBtn = () => {
-    navigate("/");
-  };
-  if (pathname !== "dash") {
-    goHomeBtn = (
-      <button onClick={handleGoHomeBtn}>
-        {" "}
-        <FaHome />{" "}
-      </button>
-    );
-  }
-
+  const { username, status } = useAuth();
   let content = (
     <footer className=" bg-stone-400 p-5 absolute bottom-0 w-full">
-      {" "}
-      <div className="mt-2">{goHomeBtn}</div>
-      <p> Current user :</p> <p>Status : </p>
+      <div className="flex gap-10">
+        <p className="font-semibold">
+          {" "}
+          Current user : <span className="font-light">{username}</span>{" "}
+        </p>
+        <p className="font-semibold">
+          Status : <span className="font-light">{status}</span>{" "}
+        </p>
+      </div>
     </footer>
   );
   return content;

@@ -43,13 +43,13 @@ const Login = () => {
 
   if (isLoading) return <p>Loading...</p>;
   return (
-    <section className="w-full h-screen flex flex-col justify-center items-center">
+    <section className="w-full h-screen flex flex-col items-center">
       <header>
-        <h1 className="font-bold text-3xl mb-5">Employee Login </h1>
+        <h1 className="font-bold text-3xl mt-10 mb-5">Employee Login </h1>
       </header>
 
       <form
-        className=" rounded-lg p-10 bg-stone-100 shadow-lg"
+        className=" w-3/4 md:w-1/2 lg:w-1/3 rounded-lg p-10 bg-stone-100 shadow-lg"
         onSubmit={(e) => handleLogin(e)}
       >
         <p className={`${errMsg} ? "mb-5 bg-red-200 px-5 py-5" : "hidden"`}>
@@ -74,8 +74,8 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button className="mt-5">Login</button>
-        <div className="flex gap-3 mt-5 ">
+        <button className="mt-5 mx-auto block">Login</button>
+        <div className="flex gap-3 mt-5 justify-center ">
           <input
             type="checkbox"
             name="remember"

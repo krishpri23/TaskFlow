@@ -39,9 +39,9 @@ const DashHeader = () => {
   const onUserClicked = () => navigate("/dash/users");
 
   const logoutBtn = (
-    <button to="/logout" onClick={handleLogout} className=" px-0 py-0">
+    <button to="/logout" onClick={handleLogout} className="px-0 py-0">
       {" "}
-      <IoIosLogOut className="w-10 h-5 hover:scale-110 transition-transform duration-150" />
+      <IoIosLogOut className="w-10 h-7 text-red-600" />
     </button>
   );
   let newNoteBtn = null;
@@ -113,12 +113,12 @@ const DashHeader = () => {
   let content;
   content = (
     <>
-      <nav className="flex justify-center items-center bg-stone-800 text-stone-100 ">
+      <nav className="flex justify-center items-center bg-stone-800 text-stone-100 py-1">
         <Link className="w-1/2 px-5" to="/">
           {" "}
           Notes App{" "}
         </Link>
-        <ul className="w-full flex justify-end items-center gap-1 py-3 ">
+        <ul className="w-full flex justify-end items-center gap-4 py-3 ">
           <Link to="/">Home</Link>
           {btnContent}
         </ul>

@@ -65,10 +65,10 @@ const NewUserForm = () => {
     }
   };
   return (
-    <div className="w-full h-screen flex flex-col justify-start mt-20 items-center ">
-      <h2 className="font-bold text-2xl mb-5"> Add a new user </h2>
+    <div className="w-full h-full flex flex-col justify-start items-center ">
+      <h2 className="font-bold text-2xl mb-5 mt-20"> Add a new user </h2>
       <form
-        className="w-1/2 lg:w-1/3 flex flex-col gap-10 border-2 border-stone-700 bg-stone-100 rounded-lg p-5"
+        className="w-3/4 md:w-1/2 lg:w-1/3 flex flex-col gap-10  bg-stone-100 rounded-lg shadow-lg p-5"
         onSubmit={(e) => e.preventDefault()}
       >
         <p
