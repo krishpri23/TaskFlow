@@ -39,7 +39,7 @@ const DashHeader = () => {
   const onUserClicked = () => navigate("/dash/users");
 
   const logoutBtn = (
-    <button to="/logout" onClick={handleLogout}>
+    <button to="/logout" onClick={handleLogout} className=" px-0 py-0">
       {" "}
       <IoIosLogOut className="w-10 h-5 hover:scale-110 transition-transform duration-150" />
     </button>
@@ -48,7 +48,11 @@ const DashHeader = () => {
   // notes list
   if (NOTES_REGEX.test(pathname)) {
     newNoteBtn = (
-      <button onClick={onNewNoteClicked} title="New Note">
+      <button
+        onClick={onNewNoteClicked}
+        title="New Note"
+        className="  px-0 py-0"
+      >
         {" "}
         <CgFileAdd className="w-10 h-5 hover:scale-110 transition-transform duration-150" />
       </button>
@@ -59,7 +63,11 @@ const DashHeader = () => {
   // users list
   if (USERS_REGEX.test(pathname)) {
     newUserBtn = (
-      <button onClick={onNewUserClicked} title="New User">
+      <button
+        onClick={onNewUserClicked}
+        title="New User"
+        className="  px-0 py-0"
+      >
         {" "}
         <FaUserPlus className="w-10 h-5 hover:scale-110 transition-transform duration-150" />
       </button>
@@ -70,7 +78,7 @@ const DashHeader = () => {
   if (isManager || isAdmin) {
     if (!USERS_REGEX.test(pathname) && pathname.includes("/dash")) {
       userBtn = (
-        <button onClick={onUserClicked} title="Users">
+        <button onClick={onUserClicked} title="Users" className=" px-0 py-0">
           {" "}
           <FaUserCog className="w-10 h-5 hover:scale-110 transition-transform duration-150" />
         </button>
@@ -81,7 +89,7 @@ const DashHeader = () => {
   let noteBtn = null;
   if (!NOTES_REGEX.test(pathname) && pathname.includes("/dash")) {
     noteBtn = (
-      <button title="Notes" onClick={onNotesClicked}>
+      <button title="Notes" onClick={onNotesClicked} className="  px-0 py-0">
         <FaRegEdit className="w-10 h-5 hover:scale-110 transition-transform duration-150" />
       </button>
     );
