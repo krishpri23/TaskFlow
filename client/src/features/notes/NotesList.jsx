@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useGetNotesQuery } from "./notesApiSlice";
 import Note from "./Note";
 import useAuth from "../../hooks/useAuth";
+import NoteNotFound from "../../components/NoteNotFound";
 
 const NotesList = () => {
   const { username, isManager, isAdmin } = useAuth();
@@ -20,7 +21,7 @@ const NotesList = () => {
   let content;
   if (isLoading) content = <p>Loading...</p>;
   if (isError) {
-    content = <p> {error?.data?.message} </p>;
+    content = <NoteNotFound />;
   }
   if (isSuccess) {
     const { ids, entities } = notes;
@@ -40,19 +41,9 @@ const NotesList = () => {
       filteredIds.map((noteId) => <Note key={noteId} noteId={noteId} />);
 
     content = (
-      <table className="">
-        <thead>
-          <tr>
-            <th> username </th>
-            <th>created</th>
-            <th>updated</th>
-            <th> title</th>
-            <th>owner</th>
-          </tr>
-        </thead>
-
-        <tbody>{tableContent}</tbody>
-      </table>
+      <div className="w-full h-screen flex flex-col items-center bg-sky-50 mb-10">
+        <div>{tableContent}</div>
+      </div>
     );
   }
 

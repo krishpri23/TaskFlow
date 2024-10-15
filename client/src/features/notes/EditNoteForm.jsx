@@ -58,7 +58,7 @@ const EditNoteForm = ({ note, users }) => {
     <div className="w-full h-full flex flex-col justify-center items-center ">
       <h2 className="font-bold text-xl mt-10 mb-5"> Edit Note </h2>
       <form
-        className="w-3/4 md:w-1/2 lg:w-1/3 flex flex-col gap-10 p-5 bg-stone-100 shadow-lg"
+        className="w-3/4 md:w-1/2 lg:w-1/3 flex flex-col gap-10 p-5 bg-sky-100 shadow-lg"
         onSubmit={(e) => e.preventDefault()}
       >
         <p className="text-red-800 font-bold"> {err} </p>

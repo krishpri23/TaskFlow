@@ -113,7 +113,7 @@ const DashHeader = () => {
   let content;
   content = (
     <>
-      <nav className="flex justify-center items-center bg-stone-800 text-stone-100 py-1">
+      <nav className="flex justify-center items-center bg-sky-800 text-sky-100 py-1">
         <Link className="w-1/2 px-5" to="/">
           {" "}
           Notes App{" "}
