@@ -15,6 +15,7 @@ import NewNote from "./features/notes/NewNote";
 import PersistLogin from "./features/auth/PersistLogin";
 import RequireAuth from "./features/auth/RequireAuth";
 import { ROLES } from "./config/roles";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -47,6 +48,8 @@ function App() {
           <Route index element={<Login />} />
         </Route>
       </Route>
+
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
