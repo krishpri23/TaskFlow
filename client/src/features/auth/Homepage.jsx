@@ -12,7 +12,7 @@ const Homepage = () => {
           {" "}
           Welcome to TaskFlow, {username}!{" "}
         </h1>
-        <p className="px-20 ">
+        <p className="px-5 lg:px-20 ">
           To effortlessly manage Employee Notes and Assignments, start adding
           information to take control of your employee task management today
           with TaskFlow!

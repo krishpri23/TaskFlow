@@ -56,7 +56,7 @@ const Login = () => {
           {" "}
           {errMsg}{" "}
         </p>
-        <div className="flex flex-col gap-2">
+        <div className="input-forms">
           <label htmlFor="username"> Username </label>
           <input
             type="text"
@@ -65,7 +65,7 @@ const Login = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="flex flex-col gap-2 mt-5">
+        <div className="input-forms">
           <label htmlFor="user-password"> Password </label>
           <input
             type="password"

@@ -43,38 +43,40 @@ const DashLayout = () => {
             <NavLink to="/dash/notes" className="sidebar">
               {" "}
               <CgFileAdd className="icons" />
-              <span>Notes</span>{" "}
+              <span className="sidebar-title">Notes</span>{" "}
             </NavLink>
             {/* only manager and admin can see these two */}
             {(isManager || isAdmin) && (
               <NavLink to="/dash/users" className="sidebar">
                 {" "}
                 <FaUserPlus className="icons" />
-                <span> User Settings </span>
+                <span className="sidebar-title"> User Settings </span>
               </NavLink>
             )}{" "}
             {(isManager || isAdmin) && (
               <NavLink to="/dash/users/add" className="sidebar">
                 <FaUserCog className="icons" />
-                <span>Add User </span>
+                <span className="sidebar-title">Add User </span>
               </NavLink>
             )}
             <NavLink to="/dash/notes/new" className="sidebar">
               {" "}
               <FaRegEdit className="icons" />
-              <span> Add Notes </span>
+              <span className="sidebar-title"> Add Notes </span>
             </NavLink>
             <hr className="border-b-2 border-grey-300 w-full" />
             <NavLink to="/dash" className="sidebar">
               <FaHome className="icons" />
-              <span>Home</span>
+              <span className="sidebar-title">Home</span>
             </NavLink>
             <NavLink
               onClick={handleLogout}
               className="sidebar hover:bg-red-100"
             >
               <IoIosLogOut className="icons " />
-              <span className="text-red-700 font-semibold">Logout</span>
+              <span className="font-semibold sidebar-title text-red-700">
+                Logout
+              </span>
             </NavLink>
           </ul>
         </div>
