@@ -26,7 +26,6 @@ const UsersList = () => {
 
   let tableContent;
   if (isSuccess) {
-    console.log("success", users);
     // array of user ids
     const { ids } = users;
     tableContent = ids?.length
@@ -34,16 +33,16 @@ const UsersList = () => {
       : null;
 
     content = (
-      <table className="w-full h-ful">
+      <table className="w-full md:w-3/4 h-full mx-auto table-fixed border-separate border-spacing-0 border-2 border-sky-100 rounded-lg mt-20">
         <thead>
-          <tr className="flex justify-between items-center gap-10 px-10 py-3">
+          <tr className="grid grid-cols-3 justify-between items-center gap-10 px-10 py-3 bg-sky-100 capitalize">
             <th> username </th>
             <th>roles</th>
             <th>edit</th>
           </tr>
         </thead>
 
-        <tbody>{tableContent}</tbody>
+        <tbody className="border-2 border-sky-500 ">{tableContent}</tbody>
       </table>
     );
   }

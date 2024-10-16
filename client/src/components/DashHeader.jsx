@@ -48,11 +48,7 @@ const DashHeader = () => {
   // notes list
   if (NOTES_REGEX.test(pathname)) {
     newNoteBtn = (
-      <button
-        onClick={onNewNoteClicked}
-        title="New Note"
-        className="  px-0 py-0"
-      >
+      <button onClick={onNewNoteClicked} title="New Note" className="px-0 py-0">
         {" "}
         <CgFileAdd className="w-10 h-5 hover:scale-110 transition-transform duration-150" />
       </button>
@@ -63,11 +59,7 @@ const DashHeader = () => {
   // users list
   if (USERS_REGEX.test(pathname)) {
     newUserBtn = (
-      <button
-        onClick={onNewUserClicked}
-        title="New User"
-        className="  px-0 py-0"
-      >
+      <button onClick={onNewUserClicked} title="New User" className="px-0 py-0">
         {" "}
         <FaUserPlus className="w-10 h-5 hover:scale-110 transition-transform duration-150" />
       </button>
@@ -113,7 +105,7 @@ const DashHeader = () => {
   let content;
   content = (
     <>
-      <nav className="flex justify-center items-center bg-sky-800 text-sky-100 py-1">
+      <nav className="flex justify-center items-center bg-sky-950 text-sky-100 py-1">
         <Link className="w-1/2 px-5" to="/">
           {" "}
           Notes App{" "}

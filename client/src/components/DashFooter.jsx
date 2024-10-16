@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth";
 const DashFooter = () => {
   const { username, status } = useAuth();
   let content = (
-    <footer className=" bg-sky-400 p-5 absolute bottom-0 w-full">
+    <footer className=" bg-sky-100 p-5 absolute bottom-0 w-full">
       <div className="flex gap-10">
         <p className="font-semibold">
           {" "}

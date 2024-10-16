@@ -87,9 +87,9 @@ const EditUserForm = ({ user, id }) => {
   };
   return (
     <div className="w-full h-full flex flex-col justify-center items-center ">
-      <h2 className="font-bold text-2xl my-10"> Edit User Form </h2>
+      <h2> Edit User Form </h2>
       <form
-        className="w-3/4 md:w-1/2 bg-sky-100 shadow-lg p-5 flex flex-col gap-10"
+        className="w-3/4 md:w-1/2 bg-sky-50 shadow-lg p-5 flex flex-col gap-10"
         onSubmit={(e) => e.preventDefault()}
       >
         <p
@@ -104,7 +104,7 @@ const EditUserForm = ({ user, id }) => {
           {" "}
           {err}{" "}
         </p>
-        <div className="flex  flex-col gap-2  px-10">
+        <div className="input-forms">
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -114,7 +114,7 @@ const EditUserForm = ({ user, id }) => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="flex flex-col gap-2  px-10">
+        <div className="input-forms">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -123,7 +123,7 @@ const EditUserForm = ({ user, id }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>{" "}
-        <div className="flex gap-2  px-10">
+        <div className="input-forms">
           <label htmlFor="active">Active</label>
           <input
             type="checkbox"
@@ -132,7 +132,7 @@ const EditUserForm = ({ user, id }) => {
             onChange={() => setActive((prev) => !prev)}
           />
         </div>{" "}
-        <div className="flex flex-col gap-2  px-10">
+        <div className="input-forms">
           <label htmlFor="roles">Assigned Roles :</label>
           <select
             name="roles"

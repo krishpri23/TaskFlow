@@ -6,14 +6,11 @@ html {
   @apply font-poppins;
 }
 
-body {
-  @apply bg-sky-50;
-}
 @layer components {
   input,
   select,
   textarea {
-    @apply border-2 border-sky-200  px-5 py-2 rounded-lg;
+    @apply px-5 py-2 rounded-lg;
   }
 
   label {
@@ -21,6 +18,30 @@ body {
   }
 
   button {
-    @apply rounded-lg bg-sky-800 text-white px-10 py-3;
+    @apply rounded-lg bg-sky-950 text-white px-5 py-2;
+  }
+
+  h2 {
+    @apply font-bold text-xl mt-10 mb-5;
+  }
+
+  /* Userlist */
+  .roles {
+    @apply text-xs px-2 py-1 rounded-lg mr-2;
+  }
+  .admin {
+    @apply bg-fuchsia-200  text-fuchsia-700;
+  }
+  .employee {
+    @apply bg-indigo-200 text-indigo-700;
+  }
+
+  .manager {
+    @apply bg-stone-200 text-stone-700;
+  }
+
+  /* Forms */
+  .input-forms {
+    @apply flex  flex-col gap-2  px-10;
   }
 }

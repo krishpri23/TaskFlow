@@ -66,9 +66,9 @@ const NewUserForm = () => {
   };
   return (
     <div className="w-full h-full flex flex-col justify-start items-center ">
-      <h2 className="font-bold text-2xl mb-5 mt-20"> Add a new user </h2>
+      <h2> Add a new user </h2>
       <form
-        className="w-3/4 md:w-1/2 lg:w-1/3 flex flex-col gap-10  bg-sky-100 rounded-lg shadow-lg p-5"
+        className="w-3/4 md:w-1/2 lg:w-1/3 flex flex-col gap-10  bg-sky-50 rounded-lg shadow-lg p-5"
         onSubmit={(e) => e.preventDefault()}
       >
         <p
@@ -83,7 +83,7 @@ const NewUserForm = () => {
           {" "}
           {err}{" "}
         </p>
-        <div className="flex  flex-col gap-2  px-10">
+        <div className="input-forms">
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -93,7 +93,7 @@ const NewUserForm = () => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="flex flex-col gap-2  px-10">
+        <div className="input-forms">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -102,7 +102,7 @@ const NewUserForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>{" "}
-        <div className="flex flex-col gap-2  px-10">
+        <div className="input-forms">
           <label htmlFor="roles">Assigned Roles :</label>
           <select
             name="roles"
