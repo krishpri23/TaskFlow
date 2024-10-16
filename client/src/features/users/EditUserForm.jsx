@@ -123,7 +123,7 @@ const EditUserForm = ({ user, id }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>{" "}
-        <div className="input-forms">
+        <div className="flex gap-3 justify-start items-center px-10 ">
           <label htmlFor="active">Active</label>
           <input
             type="checkbox"

@@ -37,7 +37,7 @@ const Note = ({ noteId }) => {
         <h1 className="font-semibold text-lg pb-5 capitalize"> {note.title}</h1>
         <p className="font-light mb-10 captitalize"> {note.text} </p>
         <span
-          className={`font-bold px-5 py-1 rounded-br-xl rounded-tl-xl absolute right-0 bottom-0 ${
+          className={` font-bold px-5 py-1 rounded-br-xl rounded-tl-xl absolute right-0 bottom-0 ${
             note.completed
               ? "text-red-800 bg-red-100"
               : " text-green-700 bg-green-300"
@@ -48,12 +48,12 @@ const Note = ({ noteId }) => {
         </span>
 
         {created && updated ? (
-          <span className="text-xs text-gray-400 absolute bottom-1">
+          <span className="hidden md:inline text-xs text-gray-400 absolute bottom-1">
             {" "}
             Updated on: {updated}
           </span>
         ) : (
-          <span className="text-xs text-gray-400 absolute bottom-1">
+          <span className="hidden md:inline text-xs text-gray-400 absolute bottom-1">
             {" "}
             Created on: {created}
           </span>
