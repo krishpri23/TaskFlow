@@ -87,14 +87,14 @@ const EditUserForm = ({ user, id }) => {
   };
   return (
     <div className="w-full h-full flex flex-col justify-center items-center ">
-      <h2 className="font-bold text-2xl mb-10"> Edit User Form </h2>
+      <h2 className="font-bold text-2xl my-10"> Edit User Form </h2>
       <form
-        className="w-1/4 flex flex-col gap-10"
+        className="w-3/4 md:w-1/2 bg-sky-100 shadow-lg p-5 flex flex-col gap-10"
         onSubmit={(e) => e.preventDefault()}
       >
         <p
           className={`${
-            isError ? "text-red-600 text-3xl px-10 py-5" : "hidden"
+            isError ? "text-red-600 text-xl px-10 py-5" : "hidden"
           }`}
         >
           {" "}

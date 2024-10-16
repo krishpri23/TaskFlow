@@ -34,9 +34,9 @@ const UsersList = () => {
       : null;
 
     content = (
-      <table>
+      <table className="w-full h-ful">
         <thead>
-          <tr>
+          <tr className="flex justify-between items-center gap-10 px-10 py-3">
             <th> username </th>
             <th>roles</th>
             <th>edit</th>
