@@ -45,7 +45,7 @@ const Login = () => {
   return (
     <section className="w-full h-full flex flex-col items-center">
       <header>
-        <h1 className="font-bold text-3xl mt-10 mb-5">Employee Login </h1>
+        <h1 className="font-bold text-xl mt-10 mb-5">Employee Login </h1>
       </header>
 
       <form

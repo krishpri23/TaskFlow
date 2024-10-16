@@ -1,7 +1,5 @@
 import React from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import DashHeader from "../components/DashHeader";
-import DashFooter from "../components/DashFooter";
 import useAuth from "../hooks/useAuth";
 import { IoIosLogOut } from "react-icons/io";
 import {
@@ -13,14 +11,21 @@ import {
   FaHome,
 } from "react-icons/fa";
 import { CgFileAdd } from "react-icons/cg";
+import { useSendLogoutMutation } from "../features/auth/authApiSlice";
 const DashLayout = () => {
   const { username, isAdmin, isManager, status } = useAuth();
   const navigate = useNavigate();
+  const [logout, { isSuccess, isError, error, isLoading }] =
+    useSendLogoutMutation();
+
+  if (isError) return <p>Error: {error.data?.message}</p>;
+  if (isLoading) return <p> Logging out...</p>;
 
   const handleLogout = async () => {
     await logout();
     navigate("/");
   };
+
   return (
     <>
       <section className="w-full h-full flex justify-start gap-5 ">
@@ -65,7 +70,6 @@ const DashLayout = () => {
               <span>Home</span>
             </NavLink>
             <NavLink
-              to="/logout"
               onClick={handleLogout}
               className="sidebar hover:bg-red-100"
             >

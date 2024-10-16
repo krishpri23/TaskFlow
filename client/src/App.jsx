@@ -21,6 +21,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<RootLayout />}>
+        <Route index element={<DashIntro />} />
         <Route element={<PersistLogin />}>
           <Route
             element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}

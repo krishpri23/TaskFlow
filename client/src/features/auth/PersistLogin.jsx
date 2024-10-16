@@ -29,7 +29,7 @@ const PersistLogin = () => {
           console.log("accessToken inside verify refresh token", accessToken);
           setTrueSuccess(true);
         } catch (err) {
-          console.error(err, "err inside persist login");
+          console.error(err?.data?.message, "err inside persist login");
         }
       };
 
