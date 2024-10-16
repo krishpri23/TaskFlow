@@ -40,14 +40,18 @@ const NotesList = () => {
       ids?.length &&
       filteredIds.map((noteId) => <Note key={noteId} noteId={noteId} />);
 
-    content = (
-      <div className="w-full h-screen flex flex-col items-center bg-sky-50 mb-10">
-        <div>{tableContent}</div>
-      </div>
-    );
+    content = <div className="w-full h-full mb-10">{tableContent}</div>;
   }
 
-  return content;
+  return (
+    <>
+      <h1 className="text-2xl uppercase text-center font-bold mt-10">
+        {" "}
+        Notes{" "}
+      </h1>
+      {content}
+    </>
+  );
 };
 
 export default NotesList;

@@ -68,18 +68,10 @@ const NewUserForm = () => {
     <div className="w-full h-full flex flex-col justify-start items-center ">
       <h2> Add a new user </h2>
       <form
-        className="w-3/4 md:w-1/2 lg:w-1/3 flex flex-col gap-10  bg-sky-50 rounded-lg shadow-lg p-5"
+        className="w-3/4 md:w-1/2 lg:w-1/3 flex flex-col gap-10 shadow-lg p-5 bg-sky-50"
         onSubmit={(e) => e.preventDefault()}
       >
-        <p
-          className={`${
-            isError ? "text-red-600 text-xl px-10 text-center" : "hidden"
-          }`}
-        >
-          {" "}
-          {error?.data?.message}{" "}
-        </p>
-        <p className={`${err ? "text-red-600 text-3xl px-10 py-5" : "hidden"}`}>
+        <p className={`${err ? "text-red-600 text-lg px-10 py-5" : "hidden"}`}>
           {" "}
           {err}{" "}
         </p>

@@ -19,7 +19,7 @@ const User = ({ userId }) => {
     const cellStatus = user.active ? "" : "inactive";
 
     return (
-      <tr className="grid grid-cols-3 text-center  justify-between items-center px-10 py-3 border-t-2 border-sky-100">
+      <tr className="grid grid-cols-3 text-center  justify-between items-center px-10 py-3 border-t-2 border-sky-100 ">
         <td> {user.username}</td>
         <td>
           {userRolesString &&

@@ -33,7 +33,7 @@ const Note = ({ noteId }) => {
     const handleEdit = () => navigate(`/dash/notes/${noteId}`);
 
     return (
-      <div className="w-full mt-10 bg-sky-100 shadow-lg  px-7 py-5 rounded-xl relative">
+      <div className="w-3/4 flex flex-col  mx-auto mt-10 bg-sky-100 shadow-lg  px-7 py-5 rounded-xl relative">
         <h1 className="font-semibold text-lg pb-5 capitalize"> {note.title}</h1>
         <p className="font-light mb-10 captitalize"> {note.text} </p>
         <span

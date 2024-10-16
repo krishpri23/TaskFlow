@@ -1,27 +1,24 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Homepage = () => {
-  const navigate = useNavigate();
-  return (
-    <main className="w-full h-screen bg-sky-50 px-10 text-sky-800 flex flex-col justify-center items-center md:flex-row md:justify-evenly ">
-      <div className="w-full h-full text-center flex flex-col justify-center items-center ">
-        <h1 className="font-bold text-3xl  ">Ticket Management System</h1>
-        <p> Located in Sunnyvale, California</p>
-        <button className="mt-5 px-5" onClick={() => navigate("/dash")}>
-          {" "}
-          Visit dashboard{" "}
-        </button>
-      </div>
+  const { username } = useAuth();
 
-      <div className="w-full bg-black">
-        <img
-          src="hero.png"
-          alt="hero section"
-          className="w-full h-full bg-transparent"
-        />
+  return (
+    <section className="w-full h-full bg-sky-50 px-10 text-sky-800 flex flex-col justify-center items-center md:flex-row md:justify-evenly ">
+      <div className="w-1/2 h-full text-center flex flex-col justify-center items-center gap-5 ">
+        <h1 className="font-bold text-3xl">
+          {" "}
+          Welcome to TaskFlow, {username}!{" "}
+        </h1>
+        <p className="px-20 ">
+          To effortlessly manage Employee Notes and Assignments, start adding
+          information to take control of your employee task management today
+          with TaskFlow!
+        </p>
       </div>
-    </main>
+    </section>
   );
 };
 

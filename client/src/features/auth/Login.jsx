@@ -43,7 +43,7 @@ const Login = () => {
 
   if (isLoading) return <p>Loading...</p>;
   return (
-    <section className="w-full h-screen flex flex-col items-center">
+    <section className="w-full h-full flex flex-col items-center">
       <header>
         <h1 className="font-bold text-3xl mt-10 mb-5">Employee Login </h1>
       </header>

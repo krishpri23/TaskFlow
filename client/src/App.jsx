@@ -21,14 +21,13 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<RootLayout />}>
-        <Route index element={<Homepage />} />
         <Route element={<PersistLogin />}>
           <Route
             element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}
           >
             <Route element={<Prefetch />}>
-              <Route path="dash" element={<DashLayout />}>
-                <Route index element={<DashIntro />} />
+              <Route path="/dash" element={<DashLayout />}>
+                <Route index element={<Homepage />} />
                 <Route path="notes">
                   <Route index element={<NotesList />} />
                   <Route path=":id" element={<EditNote />} />

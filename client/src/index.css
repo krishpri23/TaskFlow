@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   @apply font-poppins;
 }
 
@@ -43,5 +49,13 @@ html {
   /* Forms */
   .input-forms {
     @apply flex  flex-col gap-2  px-10;
+  }
+
+  /* sidebar */
+  .sidebar {
+    @apply w-full flex gap-5 hover:text-sky-900 hover:bg-sky-100 py-2 hover:rounded-lg;
+  }
+  .icons {
+    @apply w-10 h-5;
   }
 }
