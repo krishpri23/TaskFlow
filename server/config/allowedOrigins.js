@@ -1,3 +1,3 @@
-const allowedOrigins = ["http://localhost:5173", "http://localhost:5174"];
+const allowedOrigins = ["https://task-flow-systems.netlify.app/"];
 
 module.exports = allowedOrigins;
