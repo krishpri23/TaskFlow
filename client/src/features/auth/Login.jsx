@@ -23,6 +23,8 @@ const Login = () => {
       return;
     }
 
+    console.log(username, password);
+
     try {
       const { accessToken } = await login({ username, password }).unwrap();
       dispatch(setCredentials({ accessToken }));

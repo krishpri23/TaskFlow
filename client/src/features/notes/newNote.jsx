@@ -4,7 +4,6 @@
 import { useSelector } from "react-redux";
 import { selectAllUsers } from "../users/usersApiSlice";
 import NewNoteForm from "./NewNoteForm";
-import { useNavigate } from "react-router-dom";
 
 const NewNote = () => {
   const users = useSelector(selectAllUsers);
