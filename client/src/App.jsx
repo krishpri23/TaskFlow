@@ -15,7 +15,7 @@ import PersistLogin from "./features/auth/PersistLogin";
 import RequireAuth from "./features/auth/RequireAuth";
 import { ROLES } from "./config/roles";
 import NotFound from "./components/NotFound";
-// import NewNote from "./features/notes/NewNote";
+import AddNote from "./features/notes/AddNote";
 
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
                 <Route path="notes">
                   <Route index element={<NotesList />} />
                   <Route path=":id" element={<EditNote />} />
-                  {/* <Route path="new" element={<NewNote />} /> */}
+                  <Route path="new" element={<AddNote />} />
                 </Route>
                 <Route path="users">
                   <Route index element={<UsersList />} />
