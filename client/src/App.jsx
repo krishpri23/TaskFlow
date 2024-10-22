@@ -11,11 +11,11 @@ import EditUser from "./features/users/EditUser";
 import EditNote from "./features/notes/EditNote";
 import NewUserForm from "./features/users/NewUserForm";
 import Prefetch from "./features/auth/Prefetch";
-import NewNote from "./features/notes/NewNote";
 import PersistLogin from "./features/auth/PersistLogin";
 import RequireAuth from "./features/auth/RequireAuth";
 import { ROLES } from "./config/roles";
 import NotFound from "./components/NotFound";
+import NewNote from "./features/notes/NewNote";
 
 function App() {
   return (
