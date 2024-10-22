@@ -1,9 +1,0 @@
-[build]
-  base = "client"        # The directory where your frontend lives
-  publish = "client/dist" # The directory that contains your build files
-  command = "npm run build" # Or 'yarn build', depending on your package manager
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
