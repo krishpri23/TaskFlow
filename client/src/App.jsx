@@ -16,6 +16,7 @@ import RequireAuth from "./features/auth/RequireAuth";
 import { ROLES } from "./config/roles";
 import NotFound from "./components/NotFound";
 import AddNote from "./features/notes/AddNote";
+import Register from "./features/auth/Register";
 
 function App() {
   return (
@@ -46,6 +47,10 @@ function App() {
 
         <Route path="login">
           <Route index element={<Login />} />
+        </Route>
+
+        <Route path="register">
+          <Route index element={<Register />} />
         </Route>
       </Route>
 

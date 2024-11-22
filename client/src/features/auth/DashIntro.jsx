@@ -14,7 +14,7 @@ const DashIntro = () => {
         </p>
         <div className="flex gap-10">
           <button onClick={() => navigate("/login")}> Login </button>
-          {/* <button onClick={() => navigate("/register")}> Create User </button> */}
+          <button onClick={() => navigate("/register")}> Register </button>
         </div>
       </div>
     </section>
