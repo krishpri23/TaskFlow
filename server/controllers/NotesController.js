@@ -5,75 +5,31 @@ const asyncHandler = require("express-async-handler");
 // @desc Get all notes
 // @route GET /notes
 // @access Private
-const getAllNotes = asyncHandler(async (req, res) => {
-  try {
-    // Get all notes from MongoDB
-    const notes = await Note.find().populate("user").exec();
+const getAllNotes = async (req, res) => {
+  // Get all notes from MongoDB
+  const notes = await Note.find().lean();
 
-    console.log("get all notes", notes);
-
-    // If no notes
-    if (!notes?.length) {
-      return res.status(400).json({ message: "No notes found" });
-    }
-
-    const notesWithUsernames = notes.map((note) => {
-      return {
-        _id: note._id,
-        title: note.title,
-        text: note.text,
-        completed: note.completed,
-        username: note.user.username,
-      };
-    });
-
-    res.json(notesWithUsernames);
-
-    // Add username to each note before sending the response
-    // See Promise.all with map() here: https://youtu.be/4lqJBBEpjRE
-    // You could also do this with a for...of loop
-    // const notesWithUser = await Promise.all(
-    //   notes.map(async (note) => {
-    //     console.log("inside notes map ", note.user);
-
-    //     const user = await User.findById(note?.user).lean().exec();
-
-    //     if (!user) {
-    //       console.error("No user found! ");
-    //       return res.status(404).json({ error: "User not found" });
-    //     }
-    //     const username = user.username;
-
-    //     console.log("user inside NOTES WITH USER");
-    //     return { ...note, username: username };
-    //   })
-    // );
-
-    // console.log("note with users", notesWithUser);
-    // res.json(notesWithUser);
-
-    // const notesWithUser = [];
-    // for (const note of notes) {
-    //   console.log("inside notes loop ", note.user);
-    //   const user = await User.find().populate("user").exec();
-
-    //   if (!user) {
-    //     console.error("No user found! ");
-    //     return res.status(404).json({ error: "User not found" });
-    //   }
-
-    //   const sanitizedNote = { ...note._doc };
-    //   sanitizedNote.username = user.username;
-
-    //   notesWithUser.push(sanitizedNote);
-    // }
-
-    // res.json(notesWithUser);
-  } catch (error) {
-    console.error("Error fetching notes:", error);
-    return res.status(500).json({ message: "Error fetching notes." });
+  // If no notes
+  if (!notes?.length) {
+    return res.status(400).json({ message: "No notes found" });
   }
-});
+
+  // Add username to each note before sending the response
+  // See Promise.all with map() here: https://youtu.be/4lqJBBEpjRE
+  // You could also do this with a for...of loop
+  const notesWithUser = await Promise.all(
+    notes.map(async (note) => {
+      if (!user) {
+        return res.status(400).json({ message: "No User found" });
+      }
+
+      const user = await User.findById(note.user).lean().exec();
+      return { ...note, username: user.username };
+    })
+  );
+
+  res.json(notesWithUser);
+};
 
 // @desc Create new note
 // @route POST /notes
