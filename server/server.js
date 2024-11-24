@@ -10,7 +10,12 @@ const connectDB = require("./config/dbConn");
 const mongoose = require("mongoose");
 const path = require("path");
 
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "https://taskflow-n1sh.onrender.com",
+    credentials: "true",
+  })
+);
 
 connectDB();
 

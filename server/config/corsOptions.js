@@ -11,7 +11,6 @@ const corsOptions = {
   //   }
   // },
 
-  origin: "https://taskflow-n1sh.onrender.com", // Replace with your frontend URL
   optionsSuccessStatus: 200,
 };
 
