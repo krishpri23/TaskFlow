@@ -6,25 +6,42 @@ const asyncHandler = require("express-async-handler");
 // @route GET /notes
 // @access Private
 const getAllNotes = asyncHandler(async (req, res) => {
-  // Get all notes from MongoDB
-  const notes = await Note.find().lean();
+  try {
+    // Get all notes from MongoDB
+    const notes = await Note.find().lean();
 
-  // If no notes
-  if (!notes?.length) {
-    return res.status(400).json({ message: "No notes found" });
+    console.log(notes, "from getAllNotes");
+
+    // If no notes
+    if (!notes?.length) {
+      return res.status(400).json({ message: "No notes found" });
+    }
+
+    // Add username to each note before sending the response
+    // See Promise.all with map() here: https://youtu.be/4lqJBBEpjRE
+    // You could also do this with a for...of loop
+    const notesWithUser = await Promise.all(
+      notes.map(async (note) => {
+        console.log("inside notes map ");
+        const user = await User.findById(note?.user).lean().exec();
+
+        if (!user) {
+          console.error("No user found! ");
+          return res.status(404).json({ error: "User not found" });
+        }
+        const username = user.username;
+
+        console.log("user inside NOTES WITH USER");
+        return { ...note, username: username };
+      })
+    );
+
+    console.log("note with users", notesWithUser);
+    res.json(notesWithUser);
+  } catch (error) {
+    console.error("Error fetching notes:", error);
+    return res.status(500).json({ message: "Error fetching notes." });
   }
-
-  // Add username to each note before sending the response
-  // See Promise.all with map() here: https://youtu.be/4lqJBBEpjRE
-  // You could also do this with a for...of loop
-  const notesWithUser = await Promise.all(
-    notes.map(async (note) => {
-      const user = await User.findById(note.user).lean().exec();
-      return { ...note, username: user.username };
-    })
-  );
-
-  res.json(notesWithUser);
 });
 
 // @desc Create new note

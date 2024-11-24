@@ -4,7 +4,7 @@ import { ROLES } from "../../config/roles";
 import { useNavigate } from "react-router-dom";
 
 const USER_REGEX = /^[A-z]{3,20}$/;
-const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
+const PWD_REGEX = /^[A-z0-9!@#$%]{4,20}$/;
 
 const NewUserForm = () => {
   // we get a function to invoke mutation
@@ -61,6 +61,7 @@ const NewUserForm = () => {
     ) {
       await addNewUser({ username, password, roles });
     } else {
+      console.log(validPassword, validUsername, roles.length);
       setErr(" Invalid username or password ! ");
     }
   };

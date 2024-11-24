@@ -3,10 +3,40 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
+// @desc register, public route, POST
+const register = asyncHandler(async (req, res) => {
+  const { username, password, roles } = req.body;
+
+  if (!username || !password || !Array.isArray(roles) || !roles.length) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
+
+  console.log(username, password, "inside create user");
+
+  // check for duplicate, exec() returns a promise, lean returns plain js objects
+  const duplicate = await User.findOne({ username }).lean().exec();
+  console.log("duplicate ", duplicate);
+  if (duplicate) {
+    // 409 - conflict
+    return res.status(409).json({ message: "User already exists" });
+  }
+
+  const hashedPwd = await bcrypt.hash(password, 10);
+  const userObject = { username, password: hashedPwd, roles };
+
+  // create new user
+  const newUser = await User.create(userObject);
+
+  if (newUser) {
+    res.status(201).json({ message: "New User created" });
+  } else {
+    res.status(400).json({ message: "Invalid user data" });
+  }
+});
+
 // @desc login, public route, POST, generates both tokens on login
 const login = asyncHandler(async (req, res) => {
   const { username, password } = req.body;
-  console.log(username, password, "inside server");
   console.log(req.body);
 
   if (!username || !password) {
@@ -106,6 +136,7 @@ const logout = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
+  register,
   login,
   refresh,
   logout,

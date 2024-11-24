@@ -23,12 +23,17 @@ const User = ({ userId }) => {
         <td> {user.username}</td>
         <td>
           {userRolesString &&
-            userRolesString.split(",").map((role) => {
+            userRolesString.split(",").map((role, i) => {
               let tags;
               if (role === "Admin") tags = "admin";
               if (role === "Employee") tags = "employee";
               if (role === "Manager") tags = "manager";
-              return <span className={`roles ${tags}`}> {role} </span>;
+              return (
+                <span key={i} className={`roles ${tags}`}>
+                  {" "}
+                  {role}{" "}
+                </span>
+              );
             })}
         </td>
         <td>

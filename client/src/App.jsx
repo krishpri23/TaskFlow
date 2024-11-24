@@ -16,7 +16,7 @@ import RequireAuth from "./features/auth/RequireAuth";
 import { ROLES } from "./config/roles";
 import NotFound from "./components/NotFound";
 import AddNote from "./features/notes/AddNote";
-import Register from "./features/auth/Register";
+// import Register from "./features/auth/Register";
 
 function App() {
   return (
@@ -49,9 +49,9 @@ function App() {
           <Route index element={<Login />} />
         </Route>
 
-        <Route path="register">
+        {/* <Route path="register">
           <Route index element={<Register />} />
-        </Route>
+        </Route> */}
       </Route>
 
       <Route path="*" element={<NotFound />} />

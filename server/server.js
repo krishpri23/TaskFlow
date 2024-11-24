@@ -1,5 +1,6 @@
 require("dotenv").config(); // import once
 const express = require("express");
+
 const PORT = process.env.port || 3500;
 const app = express();
 const cors = require("cors");
@@ -7,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const corsOptions = require("./config/corsOptions");
 const connectDB = require("./config/dbConn");
 const mongoose = require("mongoose");
+const path = require("path");
 
 app.use(cors(corsOptions));
 
@@ -14,6 +16,9 @@ connectDB();
 
 // lets us to receive json files
 app.use(express.json());
+
+app.set("trust proxy", 1 /* number of proxies between user and server */);
+app.get("/ip", (request, response) => response.send(request.ip));
 
 app.use(cookieParser());
 

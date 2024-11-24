@@ -18,10 +18,18 @@ const NotesList = () => {
     refetchOnMountOrArgChange: true,
   });
 
+  console.log("note list", notes);
+
   let content;
   if (isLoading) content = <p>Loading...</p>;
   if (isError) {
-    content = <NoteNotFound />;
+    console.log("Error inside note list", error);
+    content = (
+      <p className="bg-red-300 rounded-lg py-3 w-1/4 text-center">
+        {" "}
+        {error?.data?.message}{" "}
+      </p>
+    );
   }
   if (isSuccess) {
     const { ids, entities } = notes;
@@ -40,7 +48,11 @@ const NotesList = () => {
       ids?.length &&
       filteredIds.map((noteId) => <Note key={noteId} noteId={noteId} />);
 
-    content = <div className="w-full h-full mb-10">{tableContent}</div>;
+    content = (
+      <div className="w-full h-full mb-10">
+        {ids?.length === 0 ? <NoteNotFound /> : tableContent}
+      </div>
+    );
   }
 
   return (

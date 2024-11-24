@@ -22,6 +22,9 @@ export const notesApiSlice = apiSlice.injectEndpoints({
       validateStatus: (response, result) => {
         return response.status === 200 && !result.isError;
       },
+      transformErrorResponse: (errorResponse) => {
+        console.error("Error inside response from backend", errorResponse);
+      },
       // keepUnusedDataFor: 5,
       transformResponse: (responseData) => {
         console.log("inside transform", responseData);
@@ -35,6 +38,8 @@ export const notesApiSlice = apiSlice.injectEndpoints({
       },
       // caching and invalidating data
       providesTags: (result, error, arg) => {
+        console.log(error, "error inside notelist ");
+
         //result - transformed response from abovewhy
         //err- err obj if problem with query
         //arg - arg passed to the query

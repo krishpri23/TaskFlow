@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NoteNotFound = () => {
   return (
-    <div className="w-full h-full mt-20 px-10 bg-sky-50 flex flex-col justify-center items-center ">
+    <div className="w-full h-full px-10 bg-sky-50 flex flex-col mt-20 items-center ">
       <h1 className="font-semibold text-xl"> No notes found ! </h1>
       <span className="font-light text-lg py-3">
         {" "}

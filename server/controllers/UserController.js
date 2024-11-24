@@ -8,13 +8,14 @@ const bcrypt = require("bcrypt");
 // @access private
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find().select("-password").lean().exec();
+
   if (!users) {
     return res.status(400).json({ message: "No users found" });
   }
   res.status(201).json(users);
 });
 
-// @desc create user
+// @desc create user || Register
 // @route POST /users
 // @access private
 const createUser = asyncHandler(async (req, res) => {

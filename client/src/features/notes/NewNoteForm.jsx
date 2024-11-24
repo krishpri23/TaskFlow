@@ -29,6 +29,8 @@ const NewNoteForm = () => {
       setBody("");
       setUser("");
 
+      console.log("inside is success");
+
       navigate("/dash/notes");
     }
   }, [isSuccess, navigate]);
@@ -37,6 +39,9 @@ const NewNoteForm = () => {
     return <p> Loading...</p>;
   }
 
+  if (isError) {
+    console.error("Error", error);
+  }
   const onSave = async (e) => {
     e.preventDefault();
     if (title && body) {
