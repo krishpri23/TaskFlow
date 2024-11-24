@@ -13,6 +13,12 @@ const baseQuery = fetchBaseQuery({
     }
     return headers;
   },
+  fetchFn: async (...args) => {
+    console.log("Request:", ...args);
+    const result = await fetch(...args);
+    console.log("Response:", result);
+    return result;
+  },
 });
 
 /*  args - req url, method, body

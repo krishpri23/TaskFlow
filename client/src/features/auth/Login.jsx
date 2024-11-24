@@ -23,10 +23,9 @@ const Login = () => {
       return;
     }
 
-    console.log(username, password);
-
     try {
-      const { accessToken } = await login({ username, password }).unwrap();
+      const response = await login({ username, password }).unwrap();
+      console.log(response, "res from login");
       dispatch(setCredentials({ accessToken }));
       setUsername("");
       setPassword("");
