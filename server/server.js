@@ -17,8 +17,8 @@ connectDB();
 // lets us to receive json files
 app.use(express.json());
 
-app.set("trust proxy", 1 /* number of proxies between user and server */);
-app.get("/ip", (request, response) => response.send(request.ip));
+// app.set("trust proxy", 1 /* number of proxies between user and server */);
+// app.get("/ip", (request, response) => response.send(request.ip));
 
 app.use(cookieParser());
 
