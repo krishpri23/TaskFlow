@@ -10,7 +10,7 @@ const getAllNotes = asyncHandler(async (req, res) => {
     // Get all notes from MongoDB
     const notes = await Note.find().lean();
 
-    console.log(notes, "from getAllNotes");
+    console.log("get all notes", notes);
 
     // If no notes
     if (!notes?.length) {
@@ -20,23 +20,42 @@ const getAllNotes = asyncHandler(async (req, res) => {
     // Add username to each note before sending the response
     // See Promise.all with map() here: https://youtu.be/4lqJBBEpjRE
     // You could also do this with a for...of loop
-    const notesWithUser = await Promise.all(
-      notes.map(async (note) => {
-        console.log("inside notes map ");
-        const user = await User.findById(note?.user).lean().exec();
+    // const notesWithUser = await Promise.all(
+    //   notes.map(async (note) => {
+    //     console.log("inside notes map ", note.user);
 
-        if (!user) {
-          console.error("No user found! ");
-          return res.status(404).json({ error: "User not found" });
-        }
-        const username = user.username;
+    //     const user = await User.findById(note?.user).lean().exec();
 
-        console.log("user inside NOTES WITH USER");
-        return { ...note, username: username };
-      })
-    );
+    //     if (!user) {
+    //       console.error("No user found! ");
+    //       return res.status(404).json({ error: "User not found" });
+    //     }
+    //     const username = user.username;
 
-    console.log("note with users", notesWithUser);
+    //     console.log("user inside NOTES WITH USER");
+    //     return { ...note, username: username };
+    //   })
+    // );
+
+    // console.log("note with users", notesWithUser);
+    // res.json(notesWithUser);
+
+    const notesWithUser = [];
+    for (const note of notes) {
+      console.log("inside notes loop ", note.user);
+      const user = await User.findById(note.user).lean().exec();
+
+      if (!user) {
+        console.error("No user found! ");
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      const sanitizedNote = { ...note._doc };
+      sanitizedNote.username = user.username;
+
+      notesWithUser.push(sanitizedNote);
+    }
+
     res.json(notesWithUser);
   } catch (error) {
     console.error("Error fetching notes:", error);
