@@ -5,7 +5,8 @@ const baseQuery = fetchBaseQuery({
   baseUrl: "https://taskflow-api-ag4g.onrender.com",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
-    const token = getState().auth.token;
+    const token = getState()?.auth?.token;
+    console.log(token, "access token on login");
 
     // console.log(token, "inside fetch base");
     if (token) {
